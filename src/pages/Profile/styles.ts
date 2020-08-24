@@ -45,6 +45,17 @@ export const UserAvatar = styled.Image`
   align-self: center;
 `;
 
+export const UserAvatarDefault = styled.View`
+  width: 186px;
+  height: 186px;
+  border-radius: 98px;
+  background-color: #3e3b47;
+  align-self: center;
+  justify-content: center;
+  align-items: center;
+  border: 6px solid #999591;
+`;
+
 export const CameraButton = styled(RectButton)`
   position: absolute;
   width: 48px;

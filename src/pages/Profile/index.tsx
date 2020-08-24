@@ -17,6 +17,7 @@ import {
   UserAvatarContainer,
   TextInput,
   UserAvatar,
+  UserAvatarDefault,
   CameraButton,
   BackButton,
   ContainerButtons,
@@ -176,7 +177,13 @@ const Profile: React.FC = () => {
           </ContainerButtons>
 
           <UserAvatarContainer>
-            <UserAvatar source={{ uri: user.avatar_url }} />
+            {user.avatar_url ? (
+              <UserAvatar source={{ uri: user.avatar_url }} />
+            ) : (
+              <UserAvatarDefault>
+                <Icon name="user" size={70} color="#999591" />
+              </UserAvatarDefault>
+            )}
             <CameraButton onPress={handleUpdateAvatar}>
               <Icon name="camera" size={22} color="#312e38" />
             </CameraButton>

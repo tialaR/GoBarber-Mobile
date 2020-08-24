@@ -35,6 +35,7 @@
       "react/jsx-filename-extension": [1, { "extensions": [".tsx"] }],
       "import/prefer-default-export": "off",
       "react/jsx-indent": "off",
+      "import/no-duplicates": "off",
       "react/jsx-one-expression-per-line": "off",
       "camelcase": "off",
       "import/extensions": [

@@ -11,6 +11,7 @@ import {
   UserName,
   ProfileButton,
   UserAvatar,
+  UserAvatarDefault,
   ProvidersList,
   ProviderContainer,
   ProviderAvatar,
@@ -59,7 +60,13 @@ const Dashboard: React.FC = () => {
         </HeaderTitle>
 
         <ProfileButton onPress={() => navigateToProfile()}>
-          <UserAvatar source={{ uri: user.avatar_url }} />
+          {user.avatar_url ? (
+            <UserAvatar source={{ uri: user.avatar_url }} />
+          ) : (
+            <UserAvatarDefault>
+              <Icon name="user" size={30} color="#999591" />
+            </UserAvatarDefault>
+          )}
         </ProfileButton>
       </Header>
 
