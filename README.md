@@ -17,6 +17,9 @@ The user can also change his registration data and insert an avatar to his profi
 
 </br>
 
+![](gif01.gif) _&nbsp;&nbsp;_ ![](gif02.gif) 
+</br>
+
 ![](tela01.png) _&nbsp;&nbsp;&nbsp;_ ![](tela02.png)
 </br>
 
