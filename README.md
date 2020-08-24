@@ -15,6 +15,9 @@ The service providers are presented in a list, as well as their respective sched
 The user can also change his registration data and insert an avatar to his profile.
 </p>
 
+- Front-end Web: https://github.com/tialaR/GoBarber-Web-Bootcamp-Rocketseat
+- Back-end: https://github.com/tialaR/GoBarber-back-end-Bootcamp-Rocketseat
+
 </br>
 
 ![](gif01.gif) _&nbsp;&nbsp;_ ![](gif02.gif) 
