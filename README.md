@@ -1,4 +1,4 @@
-# 🚀 GoBarber-Mobile-Bootcamp-Rocketseat
+# 🚀 GoBarber Mobile
 Mobile project to schedule customer service at a barber shop. Created during my journey at Rocketseat's Bootcamp. Developed with React Native.
 
 <p>
