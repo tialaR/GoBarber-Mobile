@@ -23,6 +23,7 @@ import {
   Container,
   TextInput,
   Title,
+  Logo,
 } from './styles';
 
 interface SignUpFormData {
@@ -92,52 +93,47 @@ const SignUp: React.FC = () => {
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}
         enabled
       >
-        <ScrollView
-          keyboardShouldPersistTaps="handled"
-          contentContainerStyle={{ flex: 1 }}
-        >
-          <Container>
-            <Image source={logoImg} />
-            <View>
-              <Title>Crie sua conta</Title>
-            </View>
-            <Form ref={formRef} onSubmit={handleSignUp}>
-              <Input
-                autoCapitalize="words"
-                name="name"
-                icon="user"
-                placeholder="Nome"
-                returnKeyType="next"
-                onSubmitEditing={() => emailInputRef.current.focus()}
-              />
-              <Input
-                ref={emailInputRef}
-                keyboardType="email-address"
-                autoCapitalize="none"
-                autoCorrect={false}
-                name="email"
-                icon="mail"
-                placeholder="E-mail"
-                returnKeyType="next"
-                onSubmitEditing={() => passwordInputRef.current.focus()}
-              />
-              <Input
-                ref={passwordInputRef}
-                secureTextEntry
-                autoCompleteType="off"
-                textContentType="newPassword"
-                name="password"
-                icon="lock"
-                placeholder="Senha"
-                returnKeyType="send"
-                onSubmitEditing={() => formRef.current?.submitForm()}
-              />
-              <Button onPress={() => formRef.current?.submitForm()}>
-                Cadastrar
-              </Button>
-            </Form>
-          </Container>
-        </ScrollView>
+        <Container>
+          <Logo source={logoImg} />
+          <View>
+            <Title>Crie sua conta</Title>
+          </View>
+          <Form ref={formRef} onSubmit={handleSignUp}>
+            <Input
+              autoCapitalize="words"
+              name="name"
+              icon="user"
+              placeholder="Nome"
+              returnKeyType="next"
+              onSubmitEditing={() => emailInputRef.current.focus()}
+            />
+            <Input
+              ref={emailInputRef}
+              keyboardType="email-address"
+              autoCapitalize="none"
+              autoCorrect={false}
+              name="email"
+              icon="mail"
+              placeholder="E-mail"
+              returnKeyType="next"
+              onSubmitEditing={() => passwordInputRef.current.focus()}
+            />
+            <Input
+              ref={passwordInputRef}
+              secureTextEntry
+              autoCompleteType="off"
+              textContentType="newPassword"
+              name="password"
+              icon="lock"
+              placeholder="Senha"
+              returnKeyType="send"
+              onSubmitEditing={() => formRef.current?.submitForm()}
+            />
+            <Button onPress={() => formRef.current?.submitForm()}>
+              Cadastrar
+            </Button>
+          </Form>
+        </Container>
       </KeyboardAvoidingView>
 
       <BackToSignInButton onPress={() => navigation.goBack()}>

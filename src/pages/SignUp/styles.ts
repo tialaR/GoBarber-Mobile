@@ -2,11 +2,20 @@ import { Platform } from 'react-native';
 import { getBottomSpace } from 'react-native-iphone-x-helper';
 import styled from 'styled-components/native';
 
-export const Container = styled.View`
+export const Container = styled.ScrollView.attrs({
+  keyboardShouldPersistTaps: 'handled',
+  contentContainerStyle: {
+    paddingBottom: Platform.OS === 'android' ? 150 : 100,
+  },
+})`
   flex: 1;
-  align-items: center;
-  justify-content: center;
-  padding: 0 30px ${Platform.OS === 'android' ? 150 : 100}px;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 60px;
+`;
+
+export const Logo = styled.Image`
+  align-self: center;
 `;
 
 export const Title = styled.Text`
@@ -14,6 +23,7 @@ export const Title = styled.Text`
   font-size: 24px;
   color: #f4ede8;
   margin: 64px 0 24px;
+  align-self: center;
 `;
 
 export const BackToSignInButton = styled.TouchableOpacity`

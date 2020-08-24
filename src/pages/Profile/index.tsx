@@ -4,13 +4,7 @@ import { Form } from '@unform/mobile';
 import React, { useCallback, useRef } from 'react';
 import Icon from 'react-native-vector-icons/Feather';
 import ImagePicker from 'react-native-image-picker';
-import {
-  Alert,
-  KeyboardAvoidingView,
-  Platform,
-  ScrollView,
-  View,
-} from 'react-native';
+import { Alert, KeyboardAvoidingView, Platform, View } from 'react-native';
 import * as Yup from 'yup';
 import { useAuth } from '../../hooks/auth';
 import Button from '../../components/Button';
@@ -20,10 +14,13 @@ import getValidationErrors from '../../utils/getValidationErros';
 import {
   Container,
   Title,
-  UserAvatarButton,
+  UserAvatarContainer,
   TextInput,
   UserAvatar,
+  CameraButton,
   BackButton,
+  ContainerButtons,
+  LogoutButton,
 } from './styles';
 
 interface ProfileFormData {
@@ -35,7 +32,7 @@ interface ProfileFormData {
 }
 
 const Profile: React.FC = () => {
-  const { user, updateUser } = useAuth();
+  const { user, updateUser, signOut } = useAuth();
 
   const navigation = useNavigation();
   const formRef = useRef<FormHandles>(null);
@@ -134,6 +131,7 @@ const Profile: React.FC = () => {
 
         // Deu algum erro
         if (response.error) {
+          console.warn(response.error);
           Alert.alert('Erro ao atualizar seu avatar.');
           return;
         }
@@ -142,7 +140,7 @@ const Profile: React.FC = () => {
 
         // Configurando objeto do tipo FormData para enviar a api
         data.append('avatar', {
-          image: 'image/jpeg', // tipo da imagem
+          type: 'image/jpeg', // tipo da imagem
           name: `${user.id}.jpeg`, // nome da imagem
           uri: response.uri, // url da imagem
         });
@@ -167,13 +165,22 @@ const Profile: React.FC = () => {
         enabled
       >
         <Container>
-          <BackButton onPress={handleGoBack}>
-            <Icon name="chevron-left" size={24} color="#999591" />
-          </BackButton>
+          <ContainerButtons>
+            <BackButton onPress={handleGoBack}>
+              <Icon name="chevron-left" size={22} color="#999591" />
+            </BackButton>
 
-          <UserAvatarButton onPress={handleUpdateAvatar}>
+            <LogoutButton onPress={signOut}>
+              <Icon name="power" size={22} color="#999591" />
+            </LogoutButton>
+          </ContainerButtons>
+
+          <UserAvatarContainer>
             <UserAvatar source={{ uri: user.avatar_url }} />
-          </UserAvatarButton>
+            <CameraButton onPress={handleUpdateAvatar}>
+              <Icon name="camera" size={22} color="#312e38" />
+            </CameraButton>
+          </UserAvatarContainer>
 
           <View>
             <Title>Meu perfil</Title>

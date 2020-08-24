@@ -9,7 +9,7 @@ import {
   Platform,
   ScrollView,
   TextInput,
-  View
+  View,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 import * as Yup from 'yup';
@@ -24,7 +24,8 @@ import {
   CreateAccountButtonText,
   ForgotPassword,
   ForgotPasswordText,
-  Title
+  Title,
+  Logo,
 } from './styles';
 
 interface SignInFormData {
@@ -87,46 +88,41 @@ const SignIn: React.FC = () => {
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}
         enabled
       >
-        <ScrollView
-          keyboardShouldPersistTaps="handled"
-          contentContainerStyle={{ flex: 1 }}
-        >
-          <Container>
-            <Image source={logoImg} />
-            <View>
-              <Title>Faça seu logon</Title>
-            </View>
+        <Container>
+          <Logo source={logoImg} />
+          <View>
+            <Title>Faça seu logon</Title>
+          </View>
 
-            <Form ref={formRef} onSubmit={handleSignIn}>
-              <Input
-                autoCapitalize="none"
-                autoCorrect={false}
-                keyboardType="email-address"
-                name="email"
-                icon="mail"
-                placeholder="E-mail"
-                returnKeyType="next"
-                onSubmitEditing={() => passwordInputRef.current?.focus()}
-              />
-              <Input
-                ref={passwordInputRef}
-                secureTextEntry
-                name="password"
-                icon="lock"
-                placeholder="Senha"
-                returnKeyType="send"
-                onSubmitEditing={() => formRef.current?.submitForm()}
-              />
-              <Button onPress={() => formRef.current?.submitForm()}>
-                Entrar
-              </Button>
-            </Form>
+          <Form ref={formRef} onSubmit={handleSignIn}>
+            <Input
+              autoCapitalize="none"
+              autoCorrect={false}
+              keyboardType="email-address"
+              name="email"
+              icon="mail"
+              placeholder="E-mail"
+              returnKeyType="next"
+              onSubmitEditing={() => passwordInputRef.current?.focus()}
+            />
+            <Input
+              ref={passwordInputRef}
+              secureTextEntry
+              name="password"
+              icon="lock"
+              placeholder="Senha"
+              returnKeyType="send"
+              onSubmitEditing={() => formRef.current?.submitForm()}
+            />
+            <Button onPress={() => formRef.current?.submitForm()}>
+              Entrar
+            </Button>
+          </Form>
 
-            <ForgotPassword onPress={() => {}}>
-              <ForgotPasswordText>Esqueci minha senha</ForgotPasswordText>
-            </ForgotPassword>
-          </Container>
-        </ScrollView>
+          <ForgotPassword onPress={() => {}}>
+            <ForgotPasswordText>Esqueci minha senha</ForgotPasswordText>
+          </ForgotPassword>
+        </Container>
       </KeyboardAvoidingView>
 
       <CreateAccountButton onPress={() => navigation.navigate('SignUp')}>

@@ -1,5 +1,6 @@
 import { Platform } from 'react-native';
 import styled from 'styled-components/native';
+import { RectButton } from 'react-native-gesture-handler';
 
 export const Container = styled.ScrollView.attrs({
   keyboardShouldPersistTaps: 'handled',
@@ -19,15 +20,40 @@ export const Title = styled.Text`
   margin: 34px 0 24px;
 `;
 
+export const ContainerButtons = styled.View`
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+`;
+
 export const BackButton = styled.TouchableOpacity`
   margin-top: 40px;
 `;
 
-export const UserAvatarButton = styled.TouchableOpacity``;
+export const LogoutButton = styled.TouchableOpacity`
+  margin-top: 40px;
+`;
+
+export const UserAvatarContainer = styled.View`
+  position: relative;
+`;
 
 export const UserAvatar = styled.Image`
   width: 186px;
   height: 186px;
   border-radius: 98px;
   align-self: center;
+`;
+
+export const CameraButton = styled(RectButton)`
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  background: #ff9000;
+  border-radius: 24px;
+  bottom: 0;
+  right: 80px;
+
+  align-items: center;
+  justify-content: center;
 `;
